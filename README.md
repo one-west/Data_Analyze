@@ -2,9 +2,73 @@
 
 ## 학습 일자
 
+### 2024/12/21
+
+- Autoencoder란?
+
+    - Autoencoder는 비지도 학습 모델의 일종으로, 입력 데이터를 재구성(reconstruction)하도록 훈련된다.
+    
+    - 일반적으로 Encoder와 Decoder 두 부분으로 구성됩니다.
+
+    - Encoder:
+
+        - 입력 데이터를 저차원의 잠재 공간(latent space)으로 압축
+        
+        - 데이터의 중요한 특징만을 보존하며 차원을 축소
+    
+    - Decoder:
+
+        - 잠재 공간의 데이터를 원래 차원의 데이터로 복원
+        
+        - 압축 과정에서 손실된 정보를 최대한 복원하려고 시도
+
 ### 2024/12/20
 
-- sklearn
+- sklearn(Scikit-learn) : 머신러닝 라이브러리
+
+    - 데이터 분석과 모델링을 간단하고 효과적으로 수행할 수 있도록 다양한 기능을 제공
+    
+    - 주로 Numpy와 Scipy 기반 위에서 구축된 라이브러리 오랜 기간 실전 환경에서 검증
+
+- fit()과 predict()
+
+    - 분류(Classifiacation)와 회귀(regression)의 다양한 알고리즘을 fit()과 predict() 함수로 간단하게 학습과 예측 가능
+    
+    - ML 모델 학습을 위해서 fit() 함수를 사용하고, 학습된 모델의 예측을 위해서는 predict() 함수를 사용
+ 
+분류 알고리즘으로는 Classifier, 회귀 알고리즘으로는 Regressor로 지칭하고 이 2개를 합쳐서 Estimator 클래스라고 부른다.
+
+- 내장된 예제 데이터셋
+    |API 명|설 명|
+    |--|--|
+    |loda_boston()|회귀 용도이며, 미국 보스턴의 집 피처들과 가격에 대한 데이터 셋|
+    |loda_breast_cancer()|분류 용도이며, 위스콘신 유방암 피처들과 악성/음성 레이블 데이터 셋|
+    |load_diabetes()|회귀 용도이며, 당뇨 데이터 셋|
+    |load_digits()|분류 용도이며, 0 ~ 9 까지의 숫자의 이미지 픽셀 데이터 셋|
+    |load_iris()|분류 용도이며, 붓꽃에 대한 피처를 가진 데이터 셋|
+
+- 시계열 데이터 패턴
+
+    - 추세(Trend)
+        - 시계열 데이터가 시간에 따라서 증가하거나 감소하는 경향을 보이는 패턴
+    
+    - 계절성(Seasonality)
+        - 시계열 데이터가 일정한 주기를 가지고 반복되는 패턴
+    
+    - 순환성(Cyclical)
+        - Trend와는 달리, 일정한 주기를 가지고 반복되지만 주기의 길이가 일정하지 않은 패턴
+    
+    - 불규칙성(Irregular)
+        - 지진, 홍수, 파업, 코로나와 같은 특수한 요인에 의해 발생하는 불규칙한 패턴
+
+- 시계열 데이터 분석의 이해
+    - 분해법
+        - 시계열 데이터가 가지는 추세(Trend), 계절성(Seasonality), 주기(Cycle) 및 불규칙성(Irregularity)과 같은 구성요소를 분해하여 분석
+    - 시간 영역 분석법
+    - AR(Auto Regressive Model) 모형
+    - MA(Moving Average) 모형
+    - ARMA 모형
+    - ARIMA(Autoregressive Integrated Moving Average)
 
 ### 2024/12/19
 
