@@ -2,6 +2,65 @@
 
 ## 학습 일자
 
+### 2024/12/22
+
+- ARIMA(AutoRegressive Integrated Moving Average)
+
+    - 시계열 데이터를 분석하고 예측하는 데 사용되는 통계적 모델
+
+    - 시계열 데이터는 시간의 흐름에 따라 변화하는 데이터를 의미하며, ARIMA 모델은 이러한 데이터를 효과적으로 분석하기 위해 자주 사용
+
+- ARIMA 모델 구성 요소
+
+    - AR (AutoRegressive, 자기회귀)
+
+        - 과거의 데이터(시차 데이터)를 이용하여 현재 값을 예측하는 부분
+        - 과거 𝑝개의 데이터 값을 사용하여 현재 값을 예측
+        - ​예: 𝑌𝑡=𝜙1𝑌𝑡−1+𝜙2𝑌𝑡−2+⋯+𝜙𝑝𝑌𝑡−𝑝+𝜖𝑡 
+
+    - I (Integrated, 차분)
+
+        - 데이터를 **정상화(Stationary)**하기 위해 사용하는 변환
+        - 정상성: 평균과 분산이 시간에 따라 일정한 상태
+        - 비정상 데이터를 𝑑번 차분(diff)하여 정상성을 확보
+        - 차분 계산: 𝑌𝑡′=𝑌𝑡−𝑌𝑡−1
+​
+    - MA (Moving Average, 이동평균)
+
+        - 과거의 오차(예측 잔차)를 이용하여 현재 값을 예측하는 부분.
+        - 과거 𝑞개의 오차를 사용
+        - 예: 𝑌𝑡=𝜃1𝜖𝑡−1+𝜃2𝜖𝑡−2+⋯+𝜃𝑞𝜖𝑡−𝑞+𝜖𝑡
+
+- ARIMA 모델의 장단점
+    
+    - 장점
+    
+        - 간단하고 강력: 다양한 시계열 데이터에 적용 가능
+        - 다양한 상황에서 사용 가능: 트렌드와 계절성을 분리하여 분석 가능
+        - 통계적 해석 가능: 모델의 파라미터가 데이터의 구조를 설명
+    
+    - 단점:
+        
+        - 비선형 데이터에 약함: 복잡한 비선형 시계열에는 성능이 저하
+        - 계절성 데이터 처리 한계: 계절성이 있는 경우 SARIMA와 같은 확장이 필요
+        - 모델 튜닝의 복잡성: 최적의 𝑝,𝑑,𝑞값을 찾는 과정이 어렵고 시간이 소요됨
+
+- ARIMA 적용 예제
+    ```python
+    import pandas as pd
+    from statsmodels.tsa.arima.model import ARIMA
+
+    # 데이터 불러오기
+    df = pd.read_csv("apple_data.csv")
+
+    # ARIMA(1,1,1) 모델 학습
+    model = ARIMA(df["Close"].values, order=(1, 1, 1))
+    model_fit = model.fit()
+
+    # 미래 데이터 예측
+    forecast = model_fit.forecast(steps=3)
+    print(forecast)
+    ```
 ### 2024/12/21
 
 - AutoEncoder?
