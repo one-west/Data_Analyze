@@ -4,11 +4,15 @@
 
 ### 2024/12/21
 
-- Autoencoder란?
+- AutoEncoder?
 
     - Autoencoder는 비지도 학습 모델의 일종으로, 입력 데이터를 재구성(reconstruction)하도록 훈련된다.
     
-    - 일반적으로 Encoder와 Decoder 두 부분으로 구성됩니다.
+    - 입력이 들어왔을 때, 해당 입력 데이터를 최대한 압축시킨 후 , 데이터의 특징을 추출하여 다시 본래의 입력 형태로 복원시키는 신경망
+
+    - 일반적으로 Encoder와 Decoder 두 부분으로 구성됨
+
+    ![AutoEncoder이미지](https://velog.velcdn.com/images/jochedda/post/f01b86c5-5025-434b-b365-2e798a4f6538/image.png)
 
     - Encoder:
 
