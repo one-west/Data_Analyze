@@ -2,6 +2,47 @@
 
 ## 학습 일자
 
+### 24/12/23
+
+- KoNLPy(Korean Natural Language Processing in Python)
+
+    - 파이썬에서 한국어 자연어 처리를 지원하는 오픈소스 라이브러리
+
+    - 국어 형태소 분석기, 품사 태깅, 단어 추출 등과 같은 작업을 쉽게 수행할 수 있도록 다양한 한국어 NLP 엔진을 제공
+
+    ```py
+    from konlpy.tag import Okt
+
+    okt = Okt()
+    text = "한글 자연어 처리는 정말 재미있습니다."
+    print(okt.morphs(text))
+    # 출력: ['한글', '자연어', '처리', '는', '정말', '재미있', '습니다', '.']
+    ```
+
+    ```py
+    print(okt.pos(text))
+    # 출력: [('한글', 'Noun'), ('자연어', 'Noun'), ('처리', 'Noun'), ('는', 'Josa'), ...]
+    ```
+
+    ```py
+    print(okt.nouns(text))
+    # 출력: ['한글', '자연어', '처리']
+    ```
+    ```py
+    print(okt.phrases(text))
+    # 출력: ['한글 자연어 처리', '자연어 처리', '처리']
+    ```    
+
+    - 장점
+
+        - 한국어 NLP를 Python 환경에서 손쉽게 처리 가능
+        - 다양한 분석기를 제공하여 작업 목적에 맞는 선택 가능
+        - 텍스트 분석, 감성 분석, 문서 요약 등에 유용
+
+    - 단점
+
+        - 대규모 데이터 처리에서는 속도가 느릴 수 있음
+        - 특정 분석기 설치가 복잡할 수 있음(Mecab 등)
 ### 2024/12/22
 
 - ARIMA(AutoRegressive Integrated Moving Average)
@@ -63,9 +104,9 @@
     ```
 ### 2024/12/21
 
-- AutoEncoder?
+- AutoEncoder
 
-    - Autoencoder는 비지도 학습 모델의 일종으로, 입력 데이터를 재구성(reconstruction)하도록 훈련된다.
+    - AutoEncoder는 비지도 학습 모델의 일종으로, 입력 데이터를 재구성(reconstruction)하도록 훈련된다.
     
     - 입력이 들어왔을 때, 해당 입력 데이터를 최대한 압축시킨 후 , 데이터의 특징을 추출하여 다시 본래의 입력 형태로 복원시키는 신경망
 
@@ -73,17 +114,34 @@
 
     ![AutoEncoder이미지](https://velog.velcdn.com/images/jochedda/post/f01b86c5-5025-434b-b365-2e798a4f6538/image.png)
 
-    - Encoder:
+    - Encoder
 
         - 입력 데이터를 저차원의 잠재 공간(latent space)으로 압축
         
         - 데이터의 중요한 특징만을 보존하며 차원을 축소
     
-    - Decoder:
+    - Decoder
 
         - 잠재 공간의 데이터를 원래 차원의 데이터로 복원
         
         - 압축 과정에서 손실된 정보를 최대한 복원하려고 시도
+
+- LSTM AutoEncoder
+
+    - 시퀀스(sequence) 데이터에 Encoder-Decoder LSTM 아키텍처를 적용하여 구현한 오토인코더
+
+    ![LSTM AutoEncoder](https://blog.kakaocdn.net/dn/PSQyi/btsh03zPkVo/ju6cA7Dh5XDcnl3EMx9xwK/img.png)
+    
+    - Encoder
+
+        - 입력 시퀀스를 처리하여 고정된 크기의 **컨텍스트 벡터(Context Vector)**로 압축
+        - LSTM의 **숨겨진 상태(Hidden State)**와 **셀 상태(Cell State)**를 최종적으로 컨텍스트 벡터로 사용
+        - 입력 시퀀스의 길이에 따라 동작하며, 과거 정보를 기억하거나 잊는 역할을 수행
+
+    - Decoder
+
+        - 인코더에서 생성된 컨텍스트 벡터를 초기 상태로 받아 출력 시퀀스를 생성
+        - 이전 출력과 컨텍스트 벡터를 입력으로 사용하여 다음 상태를 계산
 
 ### 2024/12/20
 
